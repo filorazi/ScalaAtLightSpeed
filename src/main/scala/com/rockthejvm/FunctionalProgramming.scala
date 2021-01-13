@@ -1,11 +1,10 @@
 package com.rockthejvm
 
-import scala.jdk.CollectionConverters._
 
 object FunctionalProgramming extends App{
-  // Scala is obkect oriented
+  // Scala is object oriented
   class Person(name: String){
-    def apply(age: Int) = println(s"i0ve aged $age")
+    def apply(age: Int): Unit = println(s"i've aged: $age")
 
   }
   val bob = new Person("Bob")
@@ -22,20 +21,20 @@ object FunctionalProgramming extends App{
     --> FunctionX = Function1, Function2, ..., Function22
    */
 
-  val simpleIncremented = new Function1[Int, Int] {
+  val simpleIncremented = new ((Int) => Int) {
      override def apply(arg: Int) : Int = arg + 1
   }
 
   simpleIncremented.apply(23) // 24
   simpleIncremented(23)
   // defined a function as a variable
-  // all lscal function are instances of these FunctionX type
+  // all scala function are instances of these FunctionX type
 
-  val strinfConcat = new Function2[String,String, String]{
+  val stringConcat = new Function2[String,String, String]{
     override def apply(v1: String, v2: String): String = v1 + v2
   }
 
-  strinfConcat("Hello", " World!") //return Hello World!
+  stringConcat("Hello", " World!") //return Hello World!
 
 
   //Syntactic sugar
@@ -43,10 +42,11 @@ object FunctionalProgramming extends App{
   doubler(4) // 8
 
   val doubler2:Int => Int = (x: Int ) => 2 * x
-  doubler(4) // 8
+  doubler2(4) // 8
 
   val doubler3 = (x: Int ) => 2 * x
-  doubler(4) // 8
+  doubler3(4) // 8
+
 
   // Higher order functions: take functions as args/return functions as results
 
@@ -81,13 +81,13 @@ object FunctionalProgramming extends App{
   val anExtendedList = 0 +: aList :+ 6
   // +: prepends ---- :+ appends
 
-  //sequance
+  //sequence
   val aSequence: Seq[Int] = Seq(1,2,3) //Seq.apply(1,2,3)
   val accessedEl = aSequence.apply(1)
   val accessedEl1 = aSequence(1)
   // Elem of the seq at index 1
 
-  // Vector i a fast seq implementation
+  // Vector is a fast seq implementation
   val aVector = Vector(1,2,3,5)
 
   //sets = no duplicates
@@ -98,7 +98,8 @@ object FunctionalProgramming extends App{
 
   //ranges
   val aRange = 1 to 100
-  val twoByTwo = aRange.map(x => 2*x).toList //List (2,4,...,200)
+  val twoByTwo = aRange.map(x => 2*x) //Vector (2,4,...,200)
+  println(twoByTwo)
 
   //tuples
   val aTuples = ("Bon Jovi", "Rock", 1234)

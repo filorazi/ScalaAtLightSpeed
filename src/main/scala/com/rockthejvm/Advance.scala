@@ -8,7 +8,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 object Advance extends App{
 
   //lazy evaluation --> an expression is not evaluated until is evaluated
-  lazy val aLazyValu = 2
+  lazy val aLazyVal = 2
   lazy val lazyWithSideEffect = {
     println("I am so vary lazy")
     23
@@ -17,17 +17,18 @@ object Advance extends App{
   // useful in infinite collection
 
   //"pseudo collection": Option, Try
-  def methodWichCanReturnNull(): String = "hello Scala"
+  def methodWhichCanReturnNull(): String = "hello Scala"
+
  //not used in scala
-  if (methodWichCanReturnNull() == null) {
+  if (methodWhichCanReturnNull() == null) {
     //defensive code
   }
 
-  // option = "collection" wich contains at most one element
-  val anOption = Option(methodWichCanReturnNull()) // Some ("Hello Scala")
+  // option = "collection" which contains at most one element
+  val anOption = Option(methodWhichCanReturnNull()) // Some ("Hello Scala")
   val stringProcessing = anOption match {
     case Some(string) => s"tuttappost"
-    case _ => "somthing wrong I can feel it"
+    case _ => "something wrong, I can feel it"
   }
   def methodWithCanThrowException(): String = throw new RuntimeException
   /**
@@ -39,7 +40,7 @@ object Advance extends App{
     }
   **/
   val aTry = Try(methodWithCanThrowException())
-  // a Try = "collection with either a valye if the cose went sell or an exception if the code threw one
+  // a Try = "collection with either a value if the code went well or an exception if the code threw one
 
   val process = aTry match {
     case Success(value) => "allGood"
@@ -58,7 +59,9 @@ object Advance extends App{
     println("computed")
     56
   })
-  // the Future is a "collection" which contains a vlaue when it's evaluated
+  println("here")
+  Thread.sleep(1000)
+  // the Future is a "collection" which contains a value when it's evaluated
   // future is composable with map, flatmap and filter
   // monads
 
@@ -69,9 +72,9 @@ object Advance extends App{
 
   // 1 Implicit arguments
 
-  def aMethodWIthImplicid(implicit arg: Int) = arg + 1
+  def aMethodWIthImplicit(implicit arg: Int) = arg + 1
   implicit val myImplicitInt = 46
-  println(aMethodWIthImplicid) // aMethodeWithImplicid(myImplicitInt)
+  println(aMethodWIthImplicit) // aMethodeWithImplicit(myImplicitInt)
 
   //2 implicit conversions
   implicit class MyRichIntegers(n: Int){

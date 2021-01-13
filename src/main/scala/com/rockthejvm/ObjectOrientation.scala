@@ -11,15 +11,18 @@ object ObjectOrientation extends App {
 
   val aAnimal = new Animal
 
-  //inerithance
-  class Dog(name: String) extends Animal //constructor
+  //inheritance
+  class Dog(name: String) extends Animal{
+    override def eat(): Unit = println(s"I'm a dog eating $name")
+  } //constructor
   val aDog: Dog = new Dog("Lassie")
-  //contructior argument are not fieds
+  //constructor argument are not fields
 
-  //subtype polymorfism
+  //subtype polymorphism
   val declareAnimal: Animal = new Dog("Hachi")
   declareAnimal.eat() //the most derived method will be called at runtime
-
+  val twoDog: Dog = new Dog("luis")
+  twoDog.eat()
   //abstract class
   abstract class WalkingAnimal {
     val hasLeg = true //by default public
@@ -69,18 +72,18 @@ object ObjectOrientation extends App {
   MySingleton.specMethod()
   MySingleton.apply(84)
   MySingleton(65)
-  //the last two are the same as the apply method is stranfe
+  //the last two are the same as the apply method is peculiar
 
   object Animal { //this is different from the class Animal
     // this are called companion object
-    // companions can access each orhte's private fields/methods
+    // companions can access each other's private fields/methods
     // singleton Animal and instances of animal are different things
     val calnLiveIndef = false
   }
 
   val animalsMaxAge = Animal.calnLiveIndef //static field/methods of classes
 
-  /*case classes = light data structur with some boilerplate
+  /*case classes = light data structures with some boilerplate
    - sensible equals and hash code
    - serialization
    - companion with apply
@@ -96,7 +99,7 @@ object ObjectOrientation extends App {
     val x: String = null
     x.length
   } catch {
-    case e: Exception => "some faulty erro message"
+    case e: Exception => "some faulty error message"
   } finally {
     //executed some code no matter what
   }
@@ -107,18 +110,18 @@ object ObjectOrientation extends App {
     def tail: myList[T]
   }
 
-  //using a generic with a concrate type
+  //using a generic with a concrete type
   val aList: List[Int] = List(1,2,3) // List.apply(1,2,3)
   val first = aList.head
   val rest = aList.tail
   val stringList: List[String] = List("hello","Scala")
-  val firtSting = stringList.head
+  val firstSting = stringList.head
 
   //point #1 in scala we usually operate with immutable values/object
   //any modification to an object should return another objects
   /*
     Benefits
-    1- works miracles in multithread env
+    1- works miracles in multithreading env
     2- helps making sense of the code ("reasoning about")
    */
 

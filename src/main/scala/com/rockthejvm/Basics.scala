@@ -18,10 +18,10 @@ object Basics extends App{
 
   // if-expression
   val ifExpression = if (meaningOfLife > 43) 56 else 45
-  val chainedif = {
-    if (meaningOfLife > 43 ) 56
-    else if (meaningOfLife > 45) 59
-    else if (meaningOfLife > 47) 534
+  val chainedIf = {
+    if (meaningOfLife < 43 ) 56
+    else if (meaningOfLife < 45) 59
+    else if (meaningOfLife < 47) 534
     else 0
   }
 
@@ -47,8 +47,8 @@ object Basics extends App{
     //In scala there are no loop or iteration but Recursions
   }
 
-  // the Unit type ? no meaningful value === "void" in other language
-  // type of side effects (i/0)
+  // the Unit type has no meaningful value === "void" in other language
+  // type of side effects (i/o)
   println("Hello World")
 
   def myUnitReturnAction(): Unit = {

@@ -29,12 +29,12 @@ object PatternMatching extends App{
   }
 
   val aList = List(1,2,3)
-  val listDescriprion = aList match {
-    case List(_, 2, _) => "List constains 2 on its second position"
+  val listDescription = aList match {
+    case List(_, 2, _) => "List contains 2 on its second position"
     case _ => "unknown list"
   }
 
   //if PM doesn't match anything, it will throw a MatchError
-  //PM will try all cases in sequence and eexcute only one
+  //PM will try all cases in sequence and execute only one
 
 }
